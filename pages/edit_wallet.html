@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../styles/style2.css" />
+    <title>Edit wallet</title>
+</head>
+<body>
+    <div class="header">
+        <p class="logo">Y-WALLET</p>
+    </div>
+    <div class="topnav">
+        <a href="wallets.html">Wallets</a>
+        <a href="transactions.html">Transactions</a>
+        <a href="profile.html">Profile</a>
+        <a href="login.html" class="log_out">Logout</a>
+    </div>
+    <section class="container">
+        <div class="user_container">
+
+        <form action="#" class="form2">
+                <h2>Edit wallet</h2>
+
+     <div id="wrapper">
+        <select name="wallet">
+            <option selected="selected">Choose a wallet:</option>
+            <option value="wallet1">Wallet 1</option>
+            <option value="wallet2">Wallet 2</option>
+            <option value="wallet3">Wallet 3</option>
+
+        </select>
+    </div>
+            <label for="wallet_name">Wallet name:</label>
+                <input type="wallet_name" name="text" placeholder="Email" />
+
+
+                <label for="funds">Funds $:</label>
+                <input type="number" name="funds" placeholder="300" />
+                <div class="mt-30">
+                    <button type="button"  onclick="location.href='wallets.html'" class="button">
+                                                            Edit
+                                                    </button>
+                    <button type="button"  onclick="location.href='wallets.html'" class="button">
+                                                            Cancel
+                                                    </button>
+                </div>
+        </form>
+    </div>
+    </section>
+</body>
+</html>
