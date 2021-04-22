@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create wallet</title>
+    <link rel="stylesheet" href="styles/style2.css" />
+</head>
+<body>
+    <div class="header">
+        <p class="logo">Y-WALLET</p>
+    </div>
+    <div class="topnav">
+      <a href="wallets.html">Wallets</a>
+      <a href="transactions.html">Transactions</a>
+      <a href="profile.html">Profile</a>
+      <a href="login.html" class="log_out">Logout</a>
+    </div>
+    <section class="container">
+        <div class="user_container">
+
+            <form action=# class="form2">
+                <h2>Create wallet</h2>
+                <label class="m">Wallet name:</label>
+                <input type="text" name="name" placeholder="Wallet 1" id="name"/>
+                <label class="m">Wallet number:</label>
+                <p>1234 5678 9012 2345</p>
+                <label class="m">Funds $:</label>
+                <input type="text" id="funds" name="funds" placeholder="300" />
+
+                <div class="mt-30">
+                    <button type="submit" class="button">
+                                        Create
+                    </button>
+                    <button type="button"  onclick="location.href='wallets.html'" class="button">
+                                        Cancel
+                    </button>
+                </div>
+                <script src="js/create_wallet.js"></script>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

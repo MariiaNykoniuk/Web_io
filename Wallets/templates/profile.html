@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/0906e02806.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+    <link rel="stylesheet" href="styles/style2.css" />
+</head>
+<body>
+    <div class="header">
+        <p class="logo">Y-WALLET</p>
+    </div>
+    <div class="topnav">
+        <a href="wallets.html">Wallets</a>
+        <a href="transactions.html">Transactions</a>
+        <a href="profile.html">Profile</a>
+        <a href="login.html" class="log_out">Logout</a>
+    </div>
+    <section class="container_page">
+        <div class="user_container">
+            <h2>User profile</h2>
+            <p class="p_new">First_name:</p><p id="first_name"></p>
+            <p class="p_new">Last name:</p><p id="last_name"></p>
+            <p class="p_new">Email:</p><p id="email"></p>
+
+            <div class="mt-30">
+                <button type="button"  onclick="location.href='edit_user.html'" class="button">Edit</button>
+                <button type="button" onclick="location.href='register.html'" class="button">Delete</button>
+            </div>
+
+        </div>
+    </section>
+<script src="js/profile.js" type="module"></script>
+</body>
+</html>

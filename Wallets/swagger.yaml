@@ -1,0 +1,393 @@
+openapi: 3.0.1
+info:
+  title: Online wallet
+  description: Online wallet service REST API
+  contact:
+    email: mashanykonyuk621@gmail.com
+  version: 1.0.0
+servers:
+- url: https://wallet.io/api/v1
+- url: http://wallet.io/api/v1
+tags:
+- name: users
+  description: Operations with users
+- name: wallets
+  description: Operations with wallets
+- name: transactions
+  description: Opetations with transactions
+paths:
+          
+  /user:
+    post:
+      tags:
+        - users
+      summary: Create user
+      description: This can only be done by the logged in user.
+      operationId: createUser
+      responses:
+        default:
+          description: successful operation
+        400:
+          description: "Invalid data supplied"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserData'
+        description: Created user object
+        required: true
+  /user/login:
+    get:
+      tags:
+        - users
+      summary: Logs user into the system
+      operationId: loginUser
+      parameters:
+        - name: username
+          in: query
+          description: The user name for login
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: The password for login in clear text
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
+  /user/logout:
+    get:
+      tags:
+        - users
+      summary: Logs out current logged in user session
+      operationId: logoutUser
+      responses:
+        default:
+          description: successful operation
+  /user/{user_id}:
+    get:
+      tags:
+      - users
+      summary: Gets user by id
+      operationId: getUserById
+      parameters:
+      - name: user_id
+        in: path
+        description: 'Id of a target user'
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: Target user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserData'
+        404:
+          description: "User is not found"
+      security:
+        - ApiKeyAuth: [ ]
+    put:
+      tags:
+      - users
+      summary: Updates a user
+      operationId: updateUser
+      parameters:
+      - name: user_id
+        in: path
+        description: 'Id of a target user'
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: User data to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserData'
+        required: true
+      responses:
+        200:
+          description: Success
+        400:
+          description: "Invalid data supplied"
+        404:
+          description: "User is not found"
+      security:
+        - ApiKeyAuth: [ ]
+    delete:
+      tags:
+      - users
+      summary: Deletes a user
+      operationId: deleteUser
+      parameters:
+      - name: user_id
+        in: path
+        description: 'Id of a target user'
+        required: true
+        schema:
+          type: integer
+      responses:
+        404:
+          description: "User is not found"
+      security:
+      - ApiKeyAuth: [ ]
+  /wallet:
+    get:
+      tags:
+      - wallets
+      summary: Lists wallets of the authorized user
+      operationId: listWallets
+      responses:
+        200:
+          description: List of wallets of the authorized user (Success)
+          content:
+            application/json:
+              schema:
+                
+                items:
+                  $ref: '#/components/schemas/WalletData'
+        default:
+          description: Unexpected Error
+      security:
+      - ApiKeyAuth: [ ]
+    post:
+      tags:
+      - wallets
+      summary: Creates a wallet for the authorized user
+      operationId: createWallet
+      requestBody:
+        description: A new wallet for the authorized user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WalletToCreate'
+        required: true
+      responses:
+        200:
+          description: Created wallet (Success)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletData'
+        400:
+          description: "Invalid data supplied"
+      security:
+      - ApiKeyAuth: [ ]
+  /wallet/{wallet_id}:
+    get:
+      tags:
+      - wallets
+      summary: Get wallet of the authorized user by id
+      operationId: getWalletById
+      parameters:
+      - name: wallet_id
+        in: path
+        description: 'ID of a target wallet'
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: Target wallet (Success)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletData'
+        400:
+          description: "Invalid data supplied"
+        404:
+          description: "Wallet not found"
+      security:
+      - ApiKeyAuth: [ ]
+    put:
+      tags:
+      - wallets
+      summary: Updates a wallet of the authorized user
+      operationId: updateWallet
+      parameters:
+      - name: wallet_id
+        in: path
+        description: 'Id of a target wallet'
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Wallet data to udpate
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WalletToUpdate'
+        required: true
+      responses:
+        200:
+          description: "Success"
+        400:
+          description: "Invalid data supplied"
+        404:
+          description: "Wallet not found"
+      security:
+      - ApiKeyAuth: [ ]
+    delete:
+      tags:
+      - wallets
+      summary: Delete a wallet of the authorized user
+      operationId: deleteWallet
+      parameters:
+      - name: wallet_id
+        in: path
+        description: 'Id of a target wallet'
+        required: true
+        schema:
+          type: integer
+      responses:
+        404:
+          description: "Wallet not found"
+      security:
+      - ApiKeyAuth: [ ]
+  /wallet/{wallet_id}/send-funds:
+    post:
+      tags:
+      - transactions
+      summary: Send funds from one wallet of the authorized user to another wallet of any user
+      operationId: sendFunds
+      parameters:
+      - name: wallet_id
+        in: path
+        description: 'Id of a target wallet to send funds from'
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Transaction details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FundsToSend'
+        required: true
+      responses:
+        200:
+          description: Transaction data (Success)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionData'
+        400:
+          description: "Invalid data supplied"
+        404:
+          description: "Wallet not found"
+      security:
+        - ApiKeyAuth: [ ]
+  /wallet/{wallet_id}/transactions:
+    get:
+      tags:
+      - transactions
+      summary: Get taransactions associated with a wallet of the authorized user
+      description: Includes transactions from and to a given wallet
+      operationId: getWalletTransactions
+      parameters:
+      - name: wallet_id
+        in: path
+        description: 'Id of a target wallet'
+        required: true
+        schema:
+          type: integer
+      responses:
+        200:
+          description: Trransactions associated with a target wallet
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionData'
+        400:
+          description: "Invalid data supplied"
+        404:
+          description: "Wallet not found"
+      security:
+      - ApiKeyAuth: [ ]
+components:
+  schemas:
+    UserData:
+      type: object
+      properties:
+        uid:
+          type: integer
+        email:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        password:
+          type: string
+    WalletData:
+      required:
+      - uid
+      - funds
+      type: object
+      properties:
+        uid:
+          type: integer
+        name:
+          type: string
+        owner_uid:
+          type: integer
+        funds:
+          type: integer
+    WalletToCreate:
+      type: object
+      properties:
+        name:
+          type: string
+    WalletToUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+    FundsToSend:
+      required:
+      - to_wallet
+      - amount
+      type: object
+      properties:
+        to_wallet:
+          type: integer
+        amount:
+          type: integer
+    TransactionData:
+      required:
+      - uid
+      - to_wallet
+      - amount
+      type: object
+      properties:
+        uid:
+          type: integer
+        from_wallet:
+          type: integer
+          nullable: true
+        to_wallet:
+          type: integer
+        amount:
+          type: integer
+        datetime:
+          type: string
+          format: date-time
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
