@@ -1,0 +1,34 @@
+<body>
+  <div class="header">
+    <p class="logo">Y-WALLET</p>
+  </div>
+<div class="topnav">
+  <a href="wallets.html">Wallets</a>
+  <a href="transactions.html">Transactions</a>
+  <a href="profile.html">Profile</a>
+  <a href="login.html" class="log_out">Logout</a>
+</div>
+<section class="container">
+  <div class="user_container">
+  <form class="form2" (submit)="editUser(Email, Firstname, Lastname, Password)">
+    <h2>Edit user</h2>
+    <label>Email:</label>
+        <input type="email" name="email" placeholder="Email" value="{{email}}" #Email/>
+    <label>First Name:</label>
+    <input type="text" name="first_name" placeholder="Max" value="{{firstname}}" #Firstname/>
+    <label>Last Name:</label>
+    <input type="text" name="last_name" placeholder="Jordand" value="{{lastname}}" #Lastname/>
+    <label>Password:</label>
+    <input type="password" name="password" placeholder="password" value="{{password}}" #Password/>
+    <div class="mt-30">
+        <button type="submit" class="button">
+                            Edit
+        </button>
+        <button type="button"  onclick="location.href='profile.html'" class="button">
+                            Cancel
+        </button>
+    </div>
+  </form>
+  </div>
+</section>
+</body>

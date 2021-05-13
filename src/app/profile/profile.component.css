@@ -5,16 +5,13 @@
     margin: 0;
 }
 
-* {
-    box-sizing: border-box;
-}
-
 html,
 body {
     color: #1b1b1b;
     font: 100% Montserrat, sans-serif;
     min-height: 100%;
     height: 100%;
+    width: 100%;
 }
 
 body {
@@ -55,7 +52,7 @@ body {
         float: none;
         width: 100%;
     }
-    
+
 }
 
 .header {

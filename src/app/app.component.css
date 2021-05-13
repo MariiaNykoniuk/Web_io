@@ -1,27 +1,20 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
-$primary-color: #1c1c1c;
-$text-color: #1b1b1b;
-$logo-color: #f6f5f7;
-$backgound-gradient: linear-gradient(
-    #B696C1, #6A71BA
-);
-$font-stack: Montserrat, sans-serif;
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
 * {
     padding: 0;
     margin: 0;
 }
+
 html,
 body {
-    color: $text-color;
-    font: 100% $font-stack;
+    color: #1b1b1b;
+    font: 100% Montserrat, sans-serif;
     min-height: 100%;
     height: 100%;
 }
 
 body {
-    background: $backgound-gradient;
+    background: linear-gradient(#B696C1, #6A71BA);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -31,7 +24,7 @@ body {
 .header {
     position: absolute;
     top: 0;
-    background-color: $primary-color;
+    background-color: #1c1c1c;
     height: 10%;
     width: 100%;
 }
@@ -39,31 +32,35 @@ body {
 .logo {
     position: relative;
     font-weight: bold;
-    color: $logo-color;
+    color: #f6f5f7;
     text-align: center;
     display: block;
     margin-top: 2%;
+}
 
-    @media screen and (max-height: 500px) and (min-height: 200px) {
+@media screen and (max-width: 400px) {
+    .logo p{
         font-size: 80%;
         font-weight: 200;
         border-width: 1.5px;
-        margin-left: -3px;
+        margin-left: -10px;
+    }
+    h1 {
+        font-size: 120%;
+    }
+    .container{
+        top: 10px;
     }
 
-    @media screen and (max-height: 700px) and (min-height: 500px) {
-        font-size: 145%;
-        font-weight: 650;
-        border-width: 4px;
-        margin-left: -7px;
-    }
+}
 
-    @media screen and (max-height: 900px) and (min-height: 700px) {
+
+@media screen and (min-width: 400px) {
+    .logo {
         font-size: 160%;
         font-weight: 600;
     }
 }
-
 
 h1 {
     font-weight: bold;
@@ -128,8 +125,7 @@ input {
     margin-top: 8%;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-            0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
     width: 450px;
@@ -146,4 +142,3 @@ input {
 .sign-container {
     width: 100%;
 }
-
