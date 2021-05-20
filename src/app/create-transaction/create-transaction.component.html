@@ -1,0 +1,38 @@
+<body>
+    <div class="header">
+        <p class="logo">Y-WALLET</p>
+    </div>
+    <div class="topnav">
+        <a href="/wallets">Wallets</a>
+    <a href="/transactions">Transactions</a>
+    <a href="/user/:id">Profile</a>
+    <a (click)="logout()" class="log_out">Logout</a>
+    </div>
+    <section class="container">
+        <div class="user_container">
+
+            <form (submit)="showWallet1(Wallet_name_from, Wallet_name_to, Recipient_name, Recipient_surname, Funds)" class="form2">
+                <h2>Create transaction</h2>
+                <label class="m">Wallet from:</label>
+                <input type="text" placeholder="Wallet name" #Wallet_name_from/>
+                <label class="m">Wallet to:</label>
+                <input type="text" name="funds" placeholder="Wallet name" #Wallet_name_to/>
+                <label class="m">Recipient name:</label>
+                <input type="text" name="funds" placeholder="John" #Recipient_name/>
+                <label class="m">Recipient last name:</label>
+                <input type="text" name="funds" placeholder="Hout" #Recipient_surname/>
+                <label class="m">Funds $:</label>
+                <input type="text" name="funds" placeholder="300" #Funds/>
+
+                <div class="mt-30">
+                    <button type="submit" class="button">
+                        Submit
+                    </button>
+                    <button type="button"  onclick="location.href='/transactions'" class="button">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>

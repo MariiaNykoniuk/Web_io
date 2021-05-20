@@ -1,0 +1,24 @@
+<body>
+    <div class="header">
+        <p class="logo">Y-WALLET</p>
+    </div>
+    <div class="container" >
+        <div class="form-container sign-container">
+            <form id="LoginForm" (submit)="login(Email, Password)">
+
+                <h1>Sign in</h1>
+                <ul id="form-messages"></ul>
+                <input type="email" placeholder="Email" id="email" #Email/>
+                <input type="password" placeholder="Password" id="password" #Password/>
+                <button type="submit" id="btn-submit">Sign In</button>
+
+                <a href="/">
+                    <p>Register</p>
+                </a>
+            </form>
+
+        </div>
+    </div>
+    <footer></footer>
+</body>
+
