@@ -1,0 +1,25 @@
+<body>
+    <div class="header">
+        <p class="logo">Y-WALLET</p>
+    </div>
+    <div class="topnav">
+        <a href="/wallets">Wallets</a>
+        <a href="/transactions">Transactions</a>
+        <a>Profile</a>
+        <a (click)="logout()"  class="log_out">Logout</a>
+    </div>
+    <section class="container_page">
+        <div class="user_container">
+            <h2>User profile</h2>
+            <p class="p_new">First_name:</p><p id="first_name">{{firstname}}</p>
+            <p class="p_new">Last name:</p><p id="last_name">{{lastname}}</p>
+            <p class="p_new">Email:</p><p id="email">{{email}}</p>
+
+            <div class="mt-30">
+                <button type="button"  (click)="edit()" class="button">Edit</button>
+                <button type="button" (click)="delete()"  class="button">Delete</button>
+            </div>
+
+        </div>
+    </section>
+</body>

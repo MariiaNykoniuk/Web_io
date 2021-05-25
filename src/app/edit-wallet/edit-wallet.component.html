@@ -1,0 +1,35 @@
+<body>
+    <div class="header">
+        <p class="logo">Y-WALLET</p>
+    </div>
+    <div class="topnav">
+        <a href="/wallets">Wallets</a>
+        <a href="/transactions">Transactions</a>
+        <a href="/user/:id">Profile</a>
+        <a (click)="logout()" class="log_out">Logout</a>
+    </div>
+    <section class="container">
+        <div class="user_container">
+        <form class="form2" (submit)="editWallet(LastName, Name, Funds)">
+          <h2>Edit wallet</h2>
+          <label>Wallet name:</label>
+                <input name="text" placeholder="Name" #LastName/>
+
+          <label>Wallet new name:</label>
+                <input name="text" placeholder="New name" #Name/>
+
+
+          <label>Funds $:</label>
+                <input type="number" name="funds" placeholder="300" #Funds/>
+          <div class="mt-30">
+            <button type="submit"  class="button">
+                                                            Edit
+                                                    </button>
+            <button type="button"  onclick="location.href='/wallets'" class="button">
+                                                            Cancel
+                                                    </button>
+          </div>
+        </form>
+    </div>
+    </section>
+</body>

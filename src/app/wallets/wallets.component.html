@@ -1,0 +1,34 @@
+<body>
+    <div class="header">
+        <p class="logo">Y-WALLET</p>
+    </div>
+    <div class="topnav">
+      <a href="/wallets">Wallets</a>
+      <a href="/transactions">Transactions</a>
+      <a href="/user/:id">Profile</a>
+      <a (click)="logout()" class="log_out">Logout</a>
+    </div>
+
+    <div class="container1">
+      <a href="/wallet/edit"><h3 class="c1">
+                            # Edit wallet
+                        </h3></a>
+       <a href="/wallet"><h3 class="c1">
+                            # Create wallet
+        </h3></a>
+      <p class="logo">List of wallets</p>
+      <ul class="responsive-table1">
+        <li class="table-header">
+          <div class="column column-1">Wallet name</div>
+          <div class="column column-2">Wallet number</div>
+          <div class="column column-3">Funds</div>
+        </li>
+        <li class="table-row" *ngFor="let wallet of wallets">
+          <div class="column column-1" data-label="Wallet name">{{wallet['name']}}</div>
+          <div class="column column-2" data-label="Wallet number">2345 1234 5432 1234</div>
+          <div class="column column-3" data-label="Funds">{{wallet['funds']}}</div>
+          </li>
+
+      </ul>
+    </div>
+</body>

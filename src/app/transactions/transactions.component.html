@@ -1,0 +1,39 @@
+
+<body>
+    <div class="header">
+        <p class="logo">Y-WALLET</p>
+
+    </div>
+<div class="topnav">
+    <a href="/wallets">Wallets</a>
+    <a href="/transactions">Transactions</a>
+    <a href="/user/:id">Profile</a>
+    <a (click)="logout()" class="log_out">Logout</a>
+</div>
+
+<div class="container1">
+    <a href="/transaction">
+        <h3 class="c1"># Create transaction</h3>
+    </a>
+    <p class="logo">List of transactions</p>
+    <ul class="responsive-table p1">
+      <li class="table-row" *ngFor="let wallet of wallets">
+        <div class="column column-1" data-label="Wallet name" (click)="showTransactions(wallet['name'])"><a>{{wallet['name']}}</a></div>
+          </li>
+        <li class="table-header" >
+            <div class="column column-1">Wallet from</div>
+            <div class="column column-2">Wallet to</div>
+            <div class="column column-4">Funds</div>
+            <div class="column column-5">Date</div>
+        </li>
+        <li class="table-row" *ngFor="let transaction of transactions">
+          <div class="column column-1" data-label="Wallet name" (click)="showWallet1(transaction['from_wallet'])">{{Wallet_name1}} {{transaction['from_wallet']}}</div>
+            <div class="column column-2" data-label="Wallet number" (click)="showWallet2(transaction['to_wallet'])">{{Wallet_name2}} {{transaction['to_wallet']}}</div>
+            <div class="column column-4" data-label="Funds">{{transaction['amount']}}</div>
+            <div class="column column-5" data-label="Date">{{transaction['datetime']}}</div>
+        </li>
+
+    </ul>
+</div>
+</body>
+
